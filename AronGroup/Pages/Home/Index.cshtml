@@ -1,0 +1,22 @@
+﻿@page "/Home/Index"
+@model AronGroup.Pages.Home.IndexModel
+
+@using Microsoft.AspNetCore.Identity
+@using AronGroup.Models.User
+@using AronGroup.Utilities
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    <h4><span>Token :</span> @user!.Token </h4>
+
+}
+
+
+else
+{
+    <h4>Not logged In</h4>   
+}
